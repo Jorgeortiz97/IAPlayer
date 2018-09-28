@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Media">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handlePlay" text="Play / Pause" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleStop" text="Stop" />
+                  <Menu mnemonicParsing="false" text="Speed">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleSlow" text="Slow (0.75)" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleNormal" text="Normal (1.0)" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleFast" text="Fast (1.5)" />
+                      <MenuItem mnemonicParsing="false" onAction="#handleVeryFast" text="Very Fast (2.0)" />
+                    </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#handleFullscreen" text="Fullscreen" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <BorderPane minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #808080;" BorderPane.alignment="CENTER">
+         <left>
+            <VBox>
+               <children>
+                  <HBox spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="Time" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0" />
+                        <Slider fx:id="timeSlider" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="10.0">
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </Slider>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="currentTime" text="00:00:00" />
+                        <Label fx:id="totalTime" text="00:00:00" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <HBox alignment="TOP_CENTER" prefWidth="200.0" spacing="15.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="backImage" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#handleBackward" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="playImage" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#handlePlay" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="stopImage" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#handleStop" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="forwardImage" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#handleForward" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" top="5.0" />
+               </padding>
+            </HBox>
+         </center>
+         <right>
+            <HBox spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Volume" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="10.0" />
+                  <Slider fx:id="volSlider" blockIncrement="0.1" max="1.0" value="0.5" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="10.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></Slider>
+               </children>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </HBox>
+         </right>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </BorderPane>
+   </bottom>
+   <center>
+      <AnchorPane style="-fx-background-color: darkgray;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane style="-fx-background-color: #A9A9A988;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <MediaView fx:id="mediaView" fitHeight="1.0" fitWidth="1.0">
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </MediaView>
+               </children>
+            </Pane>
+            <VBox fx:id="bigPane" alignment="CENTER" spacing="20.0" style="-fx-background-color: #A9A9A988;" visible="false" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
+               <children>
+                  <Label fx:id="title" alignment="CENTER" text="Title" />
+                  <VBox fx:id="pane" spacing="20.0">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <ImageView fx:id="reviewBtn" fitHeight="40.0" fitWidth="100.0" onMousePressed="#handleReview" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="goBtn" fitHeight="40.0" fitWidth="100.0" onMousePressed="#handleGo" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+               </children></VBox>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

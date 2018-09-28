@@ -1,0 +1,48 @@
+.label {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+}
+
+.text-area {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+}
+
+#title{
+	-fx-font-size: 18pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: black;
+}
+
+.menu-bar {
+    -fx-background-color: #808080;
+}
+
+.context-menu {
+    -fx-background-color: #808080;
+}
+
+.text-area {
+    -fx-background-color: #A9A9A988;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.radio-button {
+	-fx-font-size: 14pt;
+	-fx-text-fill: white;
+}
+
